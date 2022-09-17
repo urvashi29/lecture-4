@@ -86,7 +86,7 @@ class AddInfo extends Component {
 
         this.setState({
             age, //age: age
-            error: { ...error, ageError },
+            error: { ...error, ageError},
             formValid
         });
 
@@ -126,7 +126,7 @@ class AddInfo extends Component {
         let formError = this.state.error.formError;
         let error = this.state.error;
 
-        if (this.validateName && this.validateAge && this.validateContact && this.state.formValid) {
+        if (this.validateName(this.state.firstName) && this.validateAge(this.state.age) && this.validateContact(this.state.contact) && this.state.formValid) {
             formError = 'Form Submitted';
             this.setState({
                 error: { ...error, formError },
@@ -134,7 +134,7 @@ class AddInfo extends Component {
                 age: '',
                 contact: ''
             });
-
+            
             //sending data to parent component(App)
             this.props.addInfo(this.state);
 
